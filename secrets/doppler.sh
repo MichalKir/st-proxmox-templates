@@ -1,5 +1,6 @@
 #!/bin/bash
 if [ "$1" == "cleanup" ]; then
+    sed -i "s/${PACKER_ROOT_PASSWORD}/REPLACE_ROOT_PASSWORD/g" ./http/ks.cfg
     unset_vars=(
         PKR_VAR_proxmox_url
         PKR_VAR_proxmox_username
@@ -23,10 +24,11 @@ if [ "$1" == "cleanup" ]; then
     for var in "${unset_vars[@]}"; do
         unset "$var"
     done
-    exit 0
+    return
 fi
 
 source <(doppler secrets download --no-file --format env -p proxmox -c prd)
+sed -i "s/REPLACE_ROOT_PASSWORD/${PACKER_ROOT_PASSWORD}/g" ./http/ks.cfg
 export PKR_VAR_proxmox_url=$PROXMOX_API_URL
 export PKR_VAR_proxmox_username=$PACKER_TOKEN_ID
 export PKR_VAR_proxmox_token=$PACKER_TOKEN_SECRET
