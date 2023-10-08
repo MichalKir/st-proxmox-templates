@@ -1,0 +1,6 @@
+---
+- name: Enable CIS Level 1 Benchmarks
+  shell: |
+    oscap xccdf eval --profile xccdf_org.ssgproject.content_profile_cis_server_l1 --remediate /usr/share/xml/scap/ssg/content/ssg-almalinux9-ds.xml || /bin/true
+  no_log: true
+  ignore_errors: true

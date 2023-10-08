@@ -1,0 +1,7 @@
+---
+- name: AlmaLinux 9 Stock Proxmox Template Playbook
+  hosts: default
+  become: true
+
+  roles:
+    - baseline

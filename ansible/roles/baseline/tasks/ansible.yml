@@ -1,0 +1,30 @@
+---
+- name: Create Ansible service account group
+  group:
+    name: svc-ansible
+    state: present
+    gid: 5000
+
+- name: Create Ansible service account
+  user:
+    name: svc-ansible
+    comment: Ansible service account
+    uid: 5000
+    group: svc-ansible
+    password: "{{ svc_ansible_password }}"
+    shell: /bin/bash
+    create_home: true
+
+- name: Add svc-ansible to sudoers
+  copy:
+    dest: /etc/sudoers.d/svc-ansible
+    content: 'svc-ansible    ALL=(ALL:ALL) ALL'
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Set authorized key from file
+  authorized_key:
+    user: svc-ansible
+    state: present
+    key: "{{ svc_ansible_public_key }}"

@@ -1,0 +1,11 @@
+---
+- name: Install quemu-guest-agent
+  dnf:
+    name:
+      - qemu-guest-agent
+      - cloud-init
+      - cloud-utils-growpart
+      - dracut-config-generic
+      - openscap-scanner
+      - scap-security-guide
+    state: latest
