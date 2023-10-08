@@ -8,13 +8,13 @@ Cleanup Ansible playbook is copied from [AlmaLinux cloud-images](https://github.
 
 | Name | OS | Description |
 | :---: | :---: | :---: |
-|AlmaLinux 9 Stock | AlmaLinux 9 | Stock AlmaLinux 9 template with CIS Level 1 Benchmark enabled by default |
+|AlmaLinux 9 Stock | AlmaLinux 9 | Stock AlmaLinux 9 template with CIS Level 1 Benchmark enabled by default. |
 
 ## Usage
 
 ### Manual
 
-Using AlmaLinux 9 Stock as example
+Using AlmaLinux 9 Stock as example.
 
 See [doppler.sh](./secrets/doppler.sh) for variables you need to provide manually or by different secrets provider if you are not using Doppler.
 
