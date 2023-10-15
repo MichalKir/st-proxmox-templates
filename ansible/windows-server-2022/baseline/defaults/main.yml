@@ -1,0 +1,13 @@
+---
+ansible_user: temp
+ansible_become_user: temp
+ansible_password: temp
+ansible_connection: temp
+ansible_winrm_transport: temp
+ansible_shell_type: temp
+ansible_winrm_server_cert_validation: temp
+ansible_shell_executable: temp
+ansible_winrm_scheme: temp
+ansible_winrm_connection_timeout: temp
+ansible_winrm_operation_timeout_sec: temp
+ansible_winrm_read_timeout_sec: temp

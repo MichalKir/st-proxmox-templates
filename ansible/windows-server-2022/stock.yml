@@ -1,0 +1,8 @@
+---
+- name: Windows Server 2022 Stock Proxmox Template Playbook
+  hosts: default
+  become: true
+  become_method: runas
+  
+  roles:
+    - baseline

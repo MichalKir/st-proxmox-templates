@@ -1,0 +1,13 @@
+---
+- name: Update Windows Server
+  block:
+    - name: Update Windows Server first try
+      win_updates:
+        category_names: '*'
+        reboot: yes
+      timeout: 3600
+  rescue:
+    - name: Update Windows Server second try
+      win_updates:
+        category_names: '*'
+        reboot: yes

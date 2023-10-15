@@ -1,0 +1,10 @@
+---
+- name: Install baseline packages
+  win_chocolatey:
+    name:
+      - python3
+      - 7zip.install
+      - vscode.install
+      - powershell-core
+      - sysinternals
+    state: latest
