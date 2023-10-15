@@ -284,7 +284,7 @@ variable "boot_wait" {
 
 variable "boot" {
   type      = string
-  default   = "order=virtio0;ide0"
+  default   = "order=virtio0;ide2"
 }
 
 variable "disable_kvm" {
