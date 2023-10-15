@@ -35,6 +35,8 @@ Following package need to be installed on Packer machine:
    When you find the correct drive it should be the same for future builds.
 3. EFI errors during the boot.  
    Check if your Windows ISO file is checked in Boot Order under Options menu of the VM. If not, update boot_order variable.
+4. Windows installation not booting.  
+   Play around with boot_wait and boot_command.
 
 ### Manual
 
