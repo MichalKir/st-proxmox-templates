@@ -9,8 +9,22 @@ Cleanup Ansible playbook is copied from [AlmaLinux cloud-images](https://github.
 | Name | OS | Description |
 | :---: | :---: | :---: |
 |AlmaLinux 9 Stock | AlmaLinux 9 | Stock AlmaLinux 9 template with CIS Level 1 Benchmark enabled by default. |
+|Windows Server 2022 Core DC Stock | Windows Server 2022 Datacenter| Stock Windows Server 2022 Core Datacenter template.|
 
 ## Usage
+
+### Prerequisites
+
+#### Windows
+
+Following package need to be installed on Packer machine:  
+| Package | Platform | Purpose |
+| :---: | :----: | :---: |
+| mkisofs | Linux | Build Autounattend iso file |
+| oscdimg | Windows |  Build Autounattend iso file |
+| hdiutil | macOS | Build Autounattend iso file |
+
+You may need to change Autounattend.xml line break type to CRLF due to git converting it to LF.  
 
 ### Manual
 
