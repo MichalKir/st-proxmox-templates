@@ -24,7 +24,15 @@ Following package need to be installed on Packer machine:
 | oscdimg | Windows |  Build Autounattend iso file |
 | hdiutil | macOS | Build Autounattend iso file |
 
-You may need to change Autounattend.xml line break type to CRLF due to git converting it to LF.  
+### Possible issues
+
+#### Windows
+
+1. You may need to change Autounattend.xml line break type to CRLF due to git converting it to LF.  
+2. If you get disk errors during installation, update DriverPaths (eg. change E: to F:) in Autounattend.xml.  
+   You can press SHIFT+F10 to open cmd when you are on error screen and than change drives until you find the one with Virtio drivers on.  
+   I plan to move drivers step to script installation to omit this issue.  
+   When you find the correct drive it should be the same for future builds.
 
 ### Manual
 
