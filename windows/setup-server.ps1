@@ -1,5 +1,5 @@
 $ErrorActionPreference = "Stop"
-$logPath = Join-Path -Path [IO.Path]::Combine($env:windir, "Temp", "packer.log")
+$logPath = [IO.Path]::Combine($env:windir, "Temp", "packer.log")
 
 Start-Sleep -Seconds 5
 
