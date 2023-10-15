@@ -17,6 +17,8 @@ Get-ChildItem -Path $virtioIsoMountDrive -Include "qemu-ga-x86_64.msi", "virtio-
 }
 "Unmounting virtio drivers" >> $logPath
 $virtioIsoMount | Dismount-DiskImage
+"Removing virtio drivers iso" >> $logPath
+Remove-Item -Path $virtioIsoDriversPath
 "Starting qemu guest agent" >> $logPath
 Start-Service -Name QEMU-GA
 
