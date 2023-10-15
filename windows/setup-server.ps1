@@ -36,7 +36,6 @@ Set-WSManQuickConfig -Force
 "Configuring PSRemoting" >> $logPath
 Enable-PSRemoting -Force -Confirm:$false
 "Configuring WinRM to allow connection from Packer"
-
 Set-WSManInstance -ResourceURI winrm/config -ValueSet @{MaxTimeoutms="7200000"}
 Set-WSManInstance -ResourceURI winrm/config/winrs -ValueSet @{MaxMemoryPerShellMB="0"}
 Set-WSManInstance -ResourceURI winrm/config/client/auth -ValueSet @{Basic=$true}
