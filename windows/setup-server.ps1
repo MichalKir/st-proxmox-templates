@@ -36,8 +36,13 @@ Set-WSManQuickConfig -Force
 "Configuring PSRemoting" >> $logPath
 Enable-PSRemoting -Force -Confirm:$false
 "Configuring WinRM to allow connection from Packer"
-Set-WSManInstance -ResourceURI winrm/config/client/auth -ValueSet @{Basic=$true} 
-Set-WSManInstance -ResourceURI winrm/config/service/auth -ValueSet @{Basic=$true} 
+
+Set-WSManInstance -ResourceURI winrm/config -ValueSet @{MaxTimeoutms="7200000"}
+Set-WSManInstance -ResourceURI winrm/config/winrs -ValueSet @{MaxMemoryPerShellMB="0"}
+Set-WSManInstance -ResourceURI winrm/config/client/auth -ValueSet @{Basic=$true}
+Set-WSManInstance -ResourceURI winrm/config/service/auth -ValueSet @{Basic=$true}
 Set-WSManInstance -ResourceURI winrm/config/service -ValueSet @{AllowUnencrypted=$true}
-"Resetting WinRM service" >> $logPath
-Restart-Service -Name winrm
+Set-WSManInstance -ResourceURI winrm/config/service -ValueSet @{MaxConcurrentOperationsPerUser="1200"}
+"Setting WinRM service to automatic startup and resetting it" >> $logPath
+Set-Service -Name WinRM -StartupType Automatic
+Restart-Service -Name WinRM
