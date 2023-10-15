@@ -6,7 +6,7 @@ Start-Sleep -Seconds 5
 # Update VirtIO Drivers
 "Downloading virtio drivers" >> $logPath
 $virtioIsoDriversPath = Join-Path -Path $env:temp -ChildPath "virtio-win.iso"
-Start-BitsTransfer -Source "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso" -Description $virtioIsoDriversPath
+Start-BitsTransfer -Source "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso" -Destination $virtioIsoDriversPath
 
 "Mounting virtio drivers iso" >> $logPath
 $virtioIsoMount = Mount-DiskImage -ImagePath $virtioIsoDriversPath -StorageType ISO
