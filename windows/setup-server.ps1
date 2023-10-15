@@ -1,13 +1,4 @@
 $ErrorActionPreference = "Stop"
-# WinRM
-Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Private
-Get-NetFirewallRule -DisplayGroup "Windows Remote Management" | Enable-NetFirewallRule
-Set-WSManQuickConfig -Force
-Enable-PSRemoting -Force -Confirm:$false
-Set-WSManInstance -ResourceURI winrm/config/client/auth -ValueSet @{Basic="true"} 
-Set-WSManInstance -ResourceURI winrm/config/service/auth -ValueSet @{Basic="true"} 
-Set-WSManInstance -ResourceURI winrm/config/service -ValueSet @{AllowUnencrypted="true"}
-
 # Update VirtIO Drivers
 $virtioIsoDriversPath = Join-Path -Path $env:temp -ChildPath "virtio-win.iso"
 Start-BitsTransfer -Source "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso" -Description $virtioIsoDriversPath
@@ -22,3 +13,13 @@ Start-Service -Name QEMU-GA
 
 # Reset Winlogon Count
 Set-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name AutoLogonCount -Value 0
+
+# WinRM
+Get-NetConnectionProfile | Set-NetConnectionProfile -NetworkCategory Private
+Get-NetFirewallRule -DisplayGroup "Windows Remote Management" | Enable-NetFirewallRule
+Set-WSManQuickConfig -Force
+Enable-PSRemoting -Force -Confirm:$false
+Set-WSManInstance -ResourceURI winrm/config/client/auth -ValueSet @{Basic=$true} 
+Set-WSManInstance -ResourceURI winrm/config/service/auth -ValueSet @{Basic=$true} 
+Set-WSManInstance -ResourceURI winrm/config/service -ValueSet @{AllowUnencrypted=$true}
+Restart-Service -Name winrm
