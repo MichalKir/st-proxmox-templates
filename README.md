@@ -33,6 +33,8 @@ Following package need to be installed on Packer machine:
    You can press SHIFT+F10 to open cmd when you are on error screen and than change drives until you find the one with Virtio drivers on.  
    I plan to move drivers step to script installation to omit this issue.  
    When you find the correct drive it should be the same for future builds.
+3. EFI errors during the boot.  
+   Check if your Windows ISO file is checked in Boot Order under Options menu of the VM. If not, update boot_order variable.
 
 ### Manual
 
