@@ -69,13 +69,11 @@ build {
     extra_arguments  = [
       "-v",
       "-e svc_ansible_public_key='${var.ansible_svc_ansible_public_key}'",
-      "-e svc_ansible_password='${var.ansible_svc_ansible_password}'"
-    ]
-    ansible_env_vars = [
-      "ANSIBLE_PIPELINING=True",
-      "ANSIBLE_REMOTE_TEMP=/tmp",
-      "ANSIBLE_HOST_KEY_CHECKING=False",
-      "ANSIBLE_SSH_ARGS='-o HostKeyAlgorithms=+ssh-rsa -o ControlMaster=no -o ControlPersist=180s -o ServerAliveInterval=120s -o TCPKeepAlive=yes'"
+      "-e svc_ansible_password='${var.ansible_svc_ansible_password}'",
+      "--ssh-extra-args",
+      "-o HostKeyAlgorithms=+ssh-rsa",
+      "--scp-extra-args",
+      "'-O'"
     ]
   }
 }
