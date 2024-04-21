@@ -49,7 +49,7 @@ See [doppler.sh](./secrets/doppler.sh) for variables you need to provide manuall
 Download and\or upgrade Packer plugin binaries:
 
 ```sh
-packer init -upgrade .
+packer init -upgrade versions.pkr.hcl
 ```
 
 Source secrets from Doppler:
